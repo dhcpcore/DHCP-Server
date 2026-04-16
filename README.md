@@ -1,1 +1,25 @@
-# DHCP-Server
+# DHCP Server
+
+## Introduction
+
+DHCP Server is a network service component responsible for automatically assigning IP addresses and related configuration parameters to client devices within a managed network. It reduces the need for manual network configuration and ensures consistent address distribution across dynamic environments. The service operates using lease-based allocation, where each client receives an IP address for a defined period along with parameters such as subnet mask, default gateway, and DNS configuration. In enterprise and medium-scale networks, DHCP Server centralizes address management and minimizes configuration errors caused by manual input.
+
+The system typically maintains a pool of available addresses organized into scopes that correspond to specific subnets. When a client requests network access, the server evaluates available leases, assigns an appropriate address, and tracks its state until renewal or expiration. This process allows efficient reuse of IP resources while maintaining network stability. DHCP Server can also enforce reservation rules for devices that require consistent addressing, such as servers, printers, or network appliances.
+
+Administrators can integrate DHCP functionality with existing infrastructure services, enabling coordinated network segmentation and policy enforcement. Logging and lease tracking mechanisms provide visibility into address utilization and client activity, supporting operational diagnostics and capacity planning. Additional mechanisms may include failover configurations and redundancy options that ensure continuous address assignment during server maintenance or unexpected service disruption events. These capabilities support high availability in enterprise deployments where uptime and consistent network configuration are critical requirements.
+
+## IP Address Allocation and Lease Management
+
+The DHCP Server manages IP address allocation through structured pools of available addresses defined within configured scopes. Each scope represents a subnet segment and contains parameters that define the valid range of addresses, exclusion lists, and lease duration settings. When a client requests network connectivity, the server selects an available address from the pool and temporarily assigns it as a lease. The lease mechanism ensures controlled reuse of IP resources by binding an address to a client identifier for a specified time period.
+
+At lease expiry, the address is returned to the pool unless renewal requests are received from the same client before expiration. Renewal behavior allows clients to retain stable network identity while maintaining efficient utilization of limited address space. Administrators can tune allocation policies by adjusting lease times based on network load, device mobility, and operational requirements. Short leases are often used in highly dynamic environments, while longer leases reduce overhead in stable infrastructures.
+
+DHCP logging can be correlated with lease events to analyze address consumption patterns and detect anomalies such as exhaustion risks or unauthorized device behavior. This information is useful for capacity planning and for adjusting scope sizes before network performance degradation occurs. Integration with authentication systems may further restrict address assignment to known devices, improving network security posture.
+
+## DHCP Options and Network Policy Configuration
+
+DHCP options allow administrators to deliver additional configuration parameters to clients beyond basic IP addressing. These options may include default gateway definitions, DNS server addresses, domain search suffixes, and time synchronization settings. By centralizing these settings, the server ensures consistent network behavior across all connected devices.
+
+Reservation rules enable fixed IP assignment for specific hardware based on MAC address identification. This approach is commonly used for infrastructure components such as printers, routers, and application servers that require stable addressing. Exclusion ranges prevent the server from assigning addresses that are reserved for static configuration or network infrastructure purposes. Option classes can be used to apply different configurations based on device type or client group membership.
+
+This allows granular control over network behavior in environments with mixed operating systems and segmented access requirements. Careful planning of option deployment reduces configuration conflicts and improves interoperability across heterogeneous networks. Administrators can also use vendor-specific options to support specialized devices requiring custom network parameters. These configurations are particularly relevant in enterprise environments where legacy systems coexist with modern infrastructure. Proper use of DHCP options reduces manual configuration effort and ensures consistent deployment of network policies. Logging of option assignments and reservation usage helps administrators audit configuration changes and troubleshoot client-specific connectivity issues efficiently. This improves operational visibility across networks.
